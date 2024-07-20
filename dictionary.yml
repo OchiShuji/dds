@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dictionary-server
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: dictionary-server
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: dictionary-server
+    spec:
+      containers:
+      - name: server
+        image: brendanburns/dictionary-server
+        ports:
+        - containerPort: 8080
